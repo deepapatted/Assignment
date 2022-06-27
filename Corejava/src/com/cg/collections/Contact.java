@@ -31,7 +31,6 @@ public class Contact {
 			System.out.println(ct);
 
 	}
-//	system.out.print
 	
 	@Override
 	public String toString() {
