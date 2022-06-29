@@ -1,16 +1,43 @@
 package com.cg.oops;
 
-class Problem2 {
-	public static void main(String[] args) {
-		Labour l1 = new Labour(1, "Arpit", 10000);
-		Labour l2 = new Labour(2, "John", 15000);
-		Manager m1 = new Manager(1, "Amit", 50000);
-		Manager m2 = new Manager(2, "Ashwin", 60000);
+abstract class Employee{
+abstract public void salary();
+}
+class Manager extends Employee{
+    int sal,incentive;
+    public Manager(int sal,int incentive){
+        this.sal=sal;
+        this.incentive=incentive;
+    }
+    public void salary(){
+        System.out.println("Manager Salary:"+(sal+incentive));
+    }
+    public int get(){
+        return sal+incentive;
+    }
+}
+class Labour extends Employee{
+    int overtime;
+    int labour_salary;
 
-		System.out.println("Name of Employee:" + l1.getEmployeeName() + "---" + "Salary:" + l1.getSalary());
-		System.out.println("Name of Employee:" + l2.getEmployeeName() + "---" + "Salary:" + l2.getSalary());
-		System.out.println("Name of Employee:" + m1.getEmployeeName() + "---" + "Salary:" + m1.getSalary());
-		System.out.println("Name of Employee:" + m2.getEmployeeName() + "---" + "Salary:" + m2.getSalary());
-	}
-
+    public Labour(int labour_salary,int overtime){
+        this.labour_salary=labour_salary;
+        this.overtime=overtime;
+    }
+    public void salary(){
+        System.out.println("Labour Salary:"+(labour_salary+overtime));
+    }
+    public int get(){
+        return labour_salary+overtime;
+    }
+}
+public class Problem2 {
+    public static void main(String[] args) {
+        Manager m=new Manager(500,100);
+        Labour l=new Labour(150,40);
+        m.salary();
+        l.salary();
+        int totalSalary=m.get()+l.get();
+        System.out.println("Total Salary of all employees: "+totalSalary);
+    }
 }
